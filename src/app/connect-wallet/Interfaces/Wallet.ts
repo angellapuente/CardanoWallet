@@ -35,7 +35,7 @@ export interface Token {
 }
 
 export interface Metadata {
-  image: string;
+  image: string | string[];
   name: string;
 }
 

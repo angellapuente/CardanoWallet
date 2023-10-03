@@ -14,6 +14,6 @@ export class ConnectWalletComponent implements OnInit {
     setTimeout(() => {
       // <<<---using ()=> syntax
       this.walletService.connectWallet();
-    }, 1000);
+    }, 100);
   }
 }

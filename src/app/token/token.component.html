@@ -1,10 +1,12 @@
 <div class="token" (click)="printTokenOnConsole()">
-  <img *ngIf="!ipfs" class="token-image" [src]="token?.metadata?.image" />
-  <img
-    *ngIf="ipfs"
-    class="token-image"
-    [src]="'https://ipfs.io/ipfs/' + ipfs"
-  />
+  <img class="token-image" [src]="srcImage" />
+
+  <div
+    *ngIf="token != null && token.quantity != null && token.quantity > 1"
+    class="quantity"
+  >
+    {{ walletService.getTokenQuantity(token) }}
+  </div>
 
   <div class="name">{{ token?.metadata?.name }}</div>
 </div>

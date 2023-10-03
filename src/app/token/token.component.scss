@@ -1,40 +1,14 @@
+$token-width: 180px;
+$image-width: 128px;
 .token {
-  margin: 8px 8px;
-  align-self: flex-start;
-  flex-basis: 0%;
-  display: flex;
-  flex-direction: column;
-  white-space: pre;
-  width: auto;
-  cursor: pointer;
+  float: left;
+  width: $token-width;
+  margin-bottom: 4px;
+  height: 200px;
+  overflow: hidden;
 }
 
 .token-div {
-  display: flex;
-  flex-direction: column;
-  white-space: pre;
-  width: auto;
-  position: relative;
-  border: none;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: row;
-  flex-basis: auto;
-  resize: none;
-  font-feature-settings: inherit;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border-width: 0;
-  border-style: solid;
-  font-size: inherit;
-  color: inherit;
-  font-family: inherit;
-  line-height: 1;
-  font-weight: inherit;
-  text-decoration: none;
-  font-style: inherit;
-  cursor: pointer;
 }
 .token-image {
   object-fit: contain;
@@ -46,46 +20,28 @@
   overflow: clip;
   white-space: pre;
   font-feature-settings: inherit;
-  font-size: inherit;
-  color: inherit;
-  font-family: inherit;
-  line-height: 1;
-  font-weight: inherit;
+}
+
+.quantity {
+  word-break: break-word;
+  width: $image-width;
+  overflow-wrap: anywhere;
+  margin-top: 2px;
+  font-size: 12px;
+  position: relative;
   text-decoration: none;
-  font-style: inherit;
-  cursor: pointer;
+  text-align: center;
+  font-weight: bolder;
 }
 
 .name {
   word-break: break-word;
+  width: $image-width;
   overflow-wrap: anywhere;
-  white-space: pre-wrap;
   margin-top: 2px;
-  width: 100%;
-  flex-basis: 0px;
-  min-height: min-content;
-  line-height: calc(1em + 5px);
-  text-align: center;
-  font-weight: 500;
   font-size: 12px;
   position: relative;
-  border: none;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: row;
-  flex-basis: auto;
-  resize: none;
-  font-feature-settings: inherit;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border-width: 0;
-  border-style: solid;
-  font-size: inherit;
-  color: inherit;
-  font-family: inherit;
-  line-height: 1;
-  font-weight: inherit;
   text-decoration: none;
-  font-style: inherit;
+  text-align: center;
+  font-weight: bold;
 }

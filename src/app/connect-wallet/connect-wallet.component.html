@@ -1,13 +1,19 @@
-<span *ngIf="walletService.Wallet"
-  >Connected: {{ walletService.getAddr() }}
-  {{ walletService.getAda() }} Ada</span
->
+<ng-container *ngIf="walletService.Wallet">
+  <span>{{ walletService.getAddr() }} </span>
+  <img
+    class="wallet-provider-image"
+    [src]="walletService.getWalletImageIconUrl()"
+  />
+  <span> ₳{{ walletService.getAda() }}</span>
+</ng-container>
 
 <button
   *ngIf="!walletService.Wallet"
   class="card card-small"
   (click)="walletService.connectWallet()"
   tabindex="0"
+  [disabled]="walletService.connecting"
 >
-  <span>Connect Wallet</span>
+  <span *ngIf="!walletService.connecting">Connect Wallet</span>
+  <span *ngIf="walletService.connecting">Connecting</span>
 </button>

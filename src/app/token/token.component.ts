@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { Token } from '../connect-wallet/Interfaces/Wallet';
+import { WalletService } from '../connect-wallet/Services/wallet.service';
 
 @Component({
   selector: 'app-token',
@@ -9,20 +10,29 @@ import { Token } from '../connect-wallet/Interfaces/Wallet';
 export class TokenComponent implements OnInit {
   @Input() token: Token | null = null;
 
-  isIpfs = false;
-  ipfs = '';
+  ipfsWeb = 'https://ipfs.io/ipfs/';
 
-  constructor() {}
+  srcImage = '';
+
+  constructor(public walletService: WalletService) {}
   ngOnInit(): void {
-    if (this.token?.metadata?.image.startsWith('ipfs://')) {
-      this.isIpfs = true;
-      this.ipfs = this.token?.metadata.image.replace('ipfs://', '');
-    } else
-      console.log(
-        this.token?.metadata?.image,
-        this.token?.metadata?.image.startsWith('ipfs://'),
-        'Do not start with'
-      );
+    let tokenSrc: string | undefined = '';
+
+    if (Array.isArray(this.token?.metadata?.image)) {
+      tokenSrc = this.token?.metadata?.image[0];
+    } else {
+      tokenSrc = this.token?.metadata?.image;
+    }
+
+    if (tokenSrc?.startsWith('ipfs://')) {
+      this.srcImage = this.ipfsWeb + tokenSrc.replace('ipfs://', '');
+    } else if (tokenSrc?.startsWith('ipfs//')) {
+      this.srcImage = this.ipfsWeb + tokenSrc.replace('ipfs//', '');
+    } else if (!tokenSrc?.includes('/')) {
+      this.srcImage = this.ipfsWeb + tokenSrc + '';
+    } else {
+      this.srcImage = tokenSrc;
+    }
   }
 
   printTokenOnConsole() {

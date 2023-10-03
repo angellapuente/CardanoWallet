@@ -1,27 +1,8 @@
 .token-container {
-  flex-wrap: wrap;
-  align-self: center;
-  min-height: min-content;
-  white-space: pre;
-  justify-content: center !important;
-  padding: 0px 20px 0px 20px;
+  border: 1px solid white;
+  padding: 10px;
+  width: 100%;
+  // height: 500px;
   position: relative;
-  border: none;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: row;
-  flex-basis: auto;
-  resize: none;
-  font-feature-settings: inherit;
-  box-sizing: border-box;
-  margin: 0;
-  border-width: 0;
-  border-style: solid;
-  font-size: inherit;
-  color: inherit;
-  font-family: inherit;
-  line-height: 1;
-  font-weight: inherit;
-  text-decoration: none;
-  font-style: inherit;
+  overflow: auto;
 }
