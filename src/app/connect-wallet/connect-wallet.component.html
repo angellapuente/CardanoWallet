@@ -1,0 +1,13 @@
+<span *ngIf="walletService.Wallet"
+  >Connected: {{ walletService.getAddr() }}
+  {{ walletService.getAda() }} Ada</span
+>
+
+<button
+  *ngIf="!walletService.Wallet"
+  class="card card-small"
+  (click)="walletService.connectWallet()"
+  tabindex="0"
+>
+  <span>Connect Wallet</span>
+</button>

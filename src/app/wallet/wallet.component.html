@@ -1,0 +1,14 @@
+<ng-container
+  *ngIf="walletService.Wallet as wallet"
+  (click)="printWalletOnConsole()"
+>
+  <div>{{ wallet.addr }}</div>
+  <div>{{ walletService.getAda() }} Ada</div>
+  <div class="token-container">
+    <ng-container *ngFor="let token of walletService.Wallet.tokens">
+      <app-token [token]="token"></app-token>
+    </ng-container>
+  </div>
+
+  {{ this.walletService.Wallet | json }}
+</ng-container>

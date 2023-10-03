@@ -1,0 +1,10 @@
+<div class="token" (click)="printTokenOnConsole()">
+  <img *ngIf="!ipfs" class="token-image" [src]="token?.metadata?.image" />
+  <img
+    *ngIf="ipfs"
+    class="token-image"
+    [src]="'https://ipfs.io/ipfs/' + ipfs"
+  />
+
+  <div class="name">{{ token?.metadata?.name }}</div>
+</div>
