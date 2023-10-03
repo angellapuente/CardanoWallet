@@ -110,6 +110,10 @@ export class WalletService {
     return Math.trunc(this.wallet?.lovelaces / 1000000);
   }
 
+  getAdaString(): string {
+    return this.formatNumber(this.getAda()+"");
+  }
+
   public getAddr(): string {
     if (!this.wallet) {
       return '';
@@ -131,7 +135,62 @@ export class WalletService {
     return Math.trunc(token.quantity / Math.pow(10, decimals));
   }
 
+
+  getTokenQuantityString(token: Token): string {
+  
+    return this.formatNumber(this.getTokenQuantity(token)+"");
+  }
+
+
   getWalletImageIconUrl() {
     return this.walletProvider.icon;
   }
+
+   public formatNumber( num: string ) {
+    // verificamos si existe el signo "-", si está, lo almacenamos en la variable 
+    // **signo** y acortamos la cadena recibida
+ let signo = "";
+ let posSigno = num.indexOf( "-" );
+ if( posSigno != -1 ) {
+     signo = "-";
+     num = num.substring( 1 );             
+ }
+
+    // verificamos si hay un ".", si no hay, instanciamos **aux** con ",00"
+    // si hay y está a "1" del fin, lo hacemos con el último número más "0"
+    // y le quitamos los decimales a **num**
+    // en otro caso, instanciamos **aux** con los valores contenidos después 
+    // del punto, y acortamos **num** 
+ let aux = "";
+ let pos = num.indexOf( "." );
+ if( pos == -1 ) {
+     aux = ",00";
+ }
+ else if( pos == num.length -2 ) {
+     aux = "," + num.substring( pos + 1 ) + "0";
+     num = num.substring( 0, pos );
+ }
+ else {
+     aux = "," + num.substring( pos + 1 );  
+     num = num.substring( 0, pos );
+ }
+
+ let contador = 1;
+ let salida = "";
+
+    // recorremos el array en sentido inverso y vamos agregando adelante de 
+    // lo ya contenido, el valor encontrado en esa posición, si el contador
+    // es multiplo de "3", agregamos un "."
+ for( let i = num.length -1; i > -1; i-- ) {
+     salida = num.substring( i, i + 1 ) + salida;
+     if( contador  % 3 == 0 ) { 
+         salida = "." + salida;
+     }
+     contador ++;
+ }
+
+    // retornamos la concatenación del signo, los enteros y los decimales
+ return signo + salida; // + aux; // quito los decimales
+}
+
 }

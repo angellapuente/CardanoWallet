@@ -5,7 +5,7 @@
     *ngIf="token != null && token.quantity != null && token.quantity > 1"
     class="quantity"
   >
-    {{ walletService.getTokenQuantity(token) }}
+    {{ walletService.getTokenQuantityString(token) }}
   </div>
 
   <div class="name">{{ token?.metadata?.name }}</div>

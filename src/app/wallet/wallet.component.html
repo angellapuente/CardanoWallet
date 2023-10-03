@@ -3,7 +3,7 @@
   (click)="printWalletOnConsole()"
 >
   <div>{{ wallet.addr }}</div>
-  <div>{{ walletService.getAda() }} Ada</div>
+  <div>{{ walletService.getAdaString() }} Ada</div>
   <div class="token-container">
     <ng-container *ngFor="let token of walletService.Wallet.tokens">
       <app-token [token]="token"></app-token>

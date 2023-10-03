@@ -1,10 +1,10 @@
 <ng-container *ngIf="walletService.Wallet">
-  <span>{{ walletService.getAddr() }} </span>
+  <span class="header-text">{{ walletService.getAddr() }} </span>
   <img
     class="wallet-provider-image"
     [src]="walletService.getWalletImageIconUrl()"
   />
-  <span> ₳{{ walletService.getAda() }}</span>
+  <span class="header-text"> ₳ {{  walletService.getAdaString() }}</span>
 </ng-container>
 
 <button
